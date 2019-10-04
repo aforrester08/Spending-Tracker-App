@@ -15,9 +15,9 @@ class Merchant
     RETURNING id"
     values = [@name]
     results = SqlRunner.run(sql, values)
-    @id = results.first()['id'].to_i)()
+    @id = results.first()['id'].to_i()
   end
-
+  
   def tags()
     sql = "SELECT * FROM tags WHERE id = $1"
     values = [@id]
@@ -43,7 +43,5 @@ class Merchant
     sql = "DELETE FROM merchants"
     SqlRunner.run(sql)
   end
-
-
 
 end
