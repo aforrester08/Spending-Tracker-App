@@ -1,0 +1,26 @@
+<h1>Not Monzo</h1>
+
+<% total_spent = 0 %>
+<% for transaction in @transactions %>
+<div>
+  <% total_spent += transaction.amount.to_i %>
+</div>
+<% end %>
+
+<%= total_spent %>
+
+
+<% for transaction in @transactions %>
+<a href="/tracker/<%= transaction.id %>">
+<div>
+  <p>Merchant: <%= transaction.merchant.name %></p>
+  <p>Type: <%= transaction.tag.type %></p>
+  <p>Amount: <%= transaction.amount %></p>
+  <hr>
+<% end %>
+</div>
+</a>
+
+<section>
+  <a href="tracker/new">Add Transaction</a>
+</section>

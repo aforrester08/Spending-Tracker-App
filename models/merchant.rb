@@ -17,12 +17,20 @@ class Merchant
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i()
   end
-  
+
   def tags()
     sql = "SELECT * FROM tags WHERE id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |tag| Tag.new(tag) }
+  end
+
+  def update()
+    sql = "UPDATE merchants SET
+      (name) = ($1)
+      WHERE id = $2"
+      values = [@name, @id]
+      SqlRunner.run(sql, values)
   end
 
   def self.all()
