@@ -34,19 +34,27 @@ post '/tracker/new' do
 end
 
 get '/tracker/:id'do
-  @transaction = Transaction.find(params['id'].to_i())
-  erb(:show)
+@transaction = Transaction.find(params['id'].to_i())
+@merchant = Merchant.find(params['id'].to_i)
+@tag = Tag.find(params['id'].to_i)
+erb(:show)
 end
 
 get '/tracker/:id/edit' do
-  @transaction = Transaction.find(params['id'])
   @merchants = Merchant.all
   @tags = Tag.all
+  @transaction = Transaction.find(params['id'])
   erb(:edit)
 end
 
 post '/tracker/:id' do
   transaction = Transaction.new(params)
   transaction.update
-  redirect to('/tracker/:id')
+  redirect to("/tracker/#{params['id']}")
+end
+
+post '/tracker/:id/delete' do
+  transaction = Transaction.find(params['id'].to_i())
+  transaction.delete()
+  redirect to("/tracker")
 end

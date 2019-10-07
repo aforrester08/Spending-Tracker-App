@@ -44,7 +44,7 @@ class Merchant
     id = $1"
     values = [id]
     results = SqlRunner.run(sql, values)
-    return Merchant.new( result.first() )
+    return Merchant.new( results.first() )
   end
 
   def self.delete_all()

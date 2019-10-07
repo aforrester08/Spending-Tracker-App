@@ -1,3 +1,11 @@
 <h1>Detailed View</h1>
 
+<p><%= @merchant.name %></p>
+<p><%= @tag.type %></p>
+<p>£<%= @transaction.amount %></p>
+
+
 <a href="/tracker/<%= @transaction.id %>/edit">Edit</a>
+<form action="/tracker/<%= @transaction.id %>/delete" method="post">
+  <input type="submit" value="Delete">
+ </form>
