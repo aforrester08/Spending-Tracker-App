@@ -4,19 +4,11 @@ header a {
   color: white !important;
   font-size: 100px;
   padding: 20px;
-  border-style: solid;
-
-  border-width: thin;
-  border-bottom: 10px;
-
 }
 
 header {
   text-align: center;
-  border-width: medium;
-  border-style: solid;
-  border-color: white;
-  border-bottom: 10px;
+
 }
 
 body {
@@ -75,7 +67,7 @@ p {
 }
 
 h6 button {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 form {
