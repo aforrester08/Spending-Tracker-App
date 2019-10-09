@@ -1,29 +1,73 @@
-
 <% total_spent = 0 %>
 <% for transaction in @transactions %>
-<div>
-  <% total_spent += transaction.amount.to_i %>
-</div>
+<% total_spent += transaction.amount.to_i %>
 <% end %>
 
-<%= total_spent %>
+<h1>
+  £<%= total_spent %>
+</h1>
 
+<% input_budget = 0 %>
+<% if @budget.length >= 1 %>
+<% input_budget = @budget.last.amount.to_i %>
+<% end %>
+<h2>
+  <%= "Your budget: £#{input_budget}" %>
+</h2>
 
-<% for transaction in @transactions %>
-<a href="/tracker/<%= transaction.id %>">
-<div style="overflow-x:auto;">
-  <table>
+<% if total_spent > input_budget && input_budget != 0%>
+<h3><%= "You have gone over your monthly budget" %></h3>
+<% end %>
 
-    <p>Merchant: <%= transaction.merchant.name %></p>
-    <p>Type: <%= transaction.tag.type %></p>
-    <p>Amount: <%= transaction.amount %></p>
+<section class="table1" >
+  <table style="text-align:center;">
+
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Merchant</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% for transaction in @transactions %>
+
+    <tbody>
+      <tr>
+        <td><%= transaction.time_stmp.slice(0..15) %></td>
+        <% if transaction.merchant %>
+        <td><%= transaction.merchant.name %> </td>
+        <% end %>
+        <td> <%= transaction.tag.type %></td>
+        <td> £<%= transaction.amount %> </td>
+        <td>
+          <button type="button" name="button">
+            <a href="/tracker/<%= transaction.id %>">View</a>
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+    <% end %>
   </table>
-
-
-<% end %>
-</div>
-</a>
-
-<section>
-  <a href="tracker/new">Add Transaction</a>
 </section>
+
+<h5>Filter by... <button type="button" name="button">Time</button>
+  <button type="button" name="button">Merchant</button>
+  <button type="button" name="button">Tag</button>
+  <button type="button" name="button">Amount</button>
+</h5>
+
+<h6>
+  <button>
+    <a href="/tracker/new">Add Transaction</a>
+  </button>
+</h6>
+
+<h6>
+  <button>
+    <a href="/tracker/new_budget">Add a budget</a>
+  </button>
+</h6>

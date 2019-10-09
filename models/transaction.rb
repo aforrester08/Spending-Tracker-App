@@ -4,13 +4,14 @@ require_relative("../db/sql_runner.rb")
 
 class Transaction
 
-  attr_reader :id, :merchant_id, :tag_id, :amount
+  attr_reader :id, :merchant_id, :tag_id, :amount, :time_stmp
 
   def initialize( options )
     @id = options['id']
     @merchant_id = options['merchant_id']
     @tag_id = options['tag_id']
     @amount = options['amount']
+    @time_stmp = options['time_stmp']
   end
 
   def save()
@@ -20,6 +21,7 @@ class Transaction
     values = [@merchant_id, @tag_id, @amount]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i()
+    @time_stmp = Time.now.getutc
   end
 
   def merchant()
@@ -69,6 +71,13 @@ class Transaction
     values = [id]
     results = SqlRunner.run(sql, values).first
     return Transaction.new( results )
+  end
+
+  def self.filter_by_merchant(merchant_id)
+    sql = "SELECT *FROM transactions WHERE merchant_id = $1"
+    values = [merchant_id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |transaction| Transaction.new(transaction)  }
   end
 
   def self.delete_all()

@@ -1,0 +1,32 @@
+<table style="text-align:center;">
+
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Merchant</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% for transaction in @transactions %>
+
+  <tbody>
+    <tr>
+      <td><%= transaction.time_stmp %></td>
+      <% if transaction.merchant %>
+      <td><%= transaction.merchant.name %> </td>
+      <% end %>
+      <td> <%= transaction.tag.type %></td>
+      <td> £<%= transaction.amount %> </td>
+      <td>
+        <button type="button" name="button">
+          <a href="/tracker/<%= transaction.id %>">View</a>
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,83 @@
+header a {
+  font-family: 'Big Shoulders Display', cursive;
+  text-align: center;
+  color: white !important;
+  font-size: 100px;
+  padding: 20px;
+  border-style: solid;
+
+  border-width: thin;
+  border-bottom: 10px;
+
+}
+
+header {
+  text-align: center;
+  border-width: medium;
+  border-style: solid;
+  border-color: white;
+  border-bottom: 10px;
+}
+
+body {
+  background: black url('/images/background.jpg');
+  background-size: 100%;
+}
+
+h1 {
+  font-family: 'Big Shoulders Display', cursive;
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  height: 40px;
+}
+
+h2 {
+  font-family: 'Big Shoulders Display', cursive;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Big Shoulders Display', cursive;
+  color: white;
+  font-size: 20px;
+  height: 10px;
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+  border-color: black;
+}
+
+h5 {
+  font-family: 'Big Shoulders Display', cursive;
+  color: white;
+  font-size: 20px;
+  height: 5px;
+  text-align: center;
+}
+
+h6 {
+  font-family: 'Big Shoulders Display', cursive;
+  color: white;
+  font-size: 20px;
+  height: 5px;
+  text-align: center;
+}
+
+p {
+  font-family: 'Big Shoulders Display';
+  color: white;
+  text-align: center;
+}
+
+h6 button {
+  font-size: 30px;
+}
+
+form {
+  align-content: center;
+}

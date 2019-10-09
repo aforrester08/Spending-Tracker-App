@@ -1,0 +1,21 @@
+table {
+  width:800px;
+  background-color: black;
+  overflow: scroll;
+  margin: auto;
+  margin-left: 300px;
+  align-content: center;
+  font-family: 'Big Shoulders Display';
+  font-size: 20px;
+}
+
+thead {
+  background-color: white;
+  color: black;
+  width: auto;
+}
+
+tbody {
+  background: white;
+  width: 300px;
+}

@@ -1,26 +1,31 @@
 <form action="/tracker" method="post">
 
+
   <label>
     <select name="merchant_id">
       <option selected disabled>Select Merchant</option>
       <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
+      <option name="name" value="<%= merchant.id %>"><%= merchant.name.capitalize %></option>
       <% end %>
     </select>
   </label>
 
-  <label>
+  <button type="button" name="button">
     <a href="/tracker/new/merchant">Add new merchant</a>
-  </label>
+  </button>
 
   <label>
     <select name="tag_id">
       <option selected disabled>Select Tag Type</option>
       <% @tags.each do |tag| %>
-      <option value="<%= tag.id %>"><%= tag.type.capitalize %></option>
+      <option name="type" value="<%= tag.id %>"><%= tag.type.capitalize %></option>
       <% end %>
     </select>
   </label>
+
+  <button type="button" name="button">
+    <a href="/tracker/tag/new">Add new tag</a>
+  </button>
 
   <label>
     Enter Amount: £

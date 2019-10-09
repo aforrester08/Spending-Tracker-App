@@ -1,11 +1,13 @@
-<h1>Detailed View</h1>
+<h2>Detailed View</h2>
 
-<p><%= @merchant.name %></p>
-<p><%= @tag.type %></p>
+<p>Time of purchase: <%= @transaction.time_stmp.slice(0..15) %></p>
+<p>Merchant: <%= @transaction.merchant.name %></p>
+<p>Tag: <%= @transaction.tag.type %></p>
 <p>£<%= @transaction.amount %></p>
 
-
-<a href="/tracker/<%= @transaction.id %>/edit">Edit</a>
+<button type="button" name="button">
+  <a href="/tracker/<%= @transaction.id %>/edit">Edit</a>
+</button>
 <form action="/tracker/<%= @transaction.id %>/delete" method="post">
   <input type="submit" value="Delete">
- </form>
+</form>
