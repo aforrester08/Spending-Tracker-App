@@ -76,8 +76,8 @@ get '/tracker/time_filter' do
 end
 
 get '/tracker/merchant_filter/:merchant_id' do
-  @transactions = Transaction.filter_by_merchant(params[:merchant_id])
-  erb(:'filter/merchant')
+  @transactions = Transaction.search_table(params)
+  erb(:'filter/search')
 end
 
 get '/tracker/tag_filter' do

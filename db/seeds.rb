@@ -49,8 +49,7 @@ tag12.save()
 merchant1 = Merchant.new({'name' => 'Tesco'})
 merchant1.save()
 
-merchant2 = Merchant.new({'name' => 'Bowling Place'})
-merchant2.save()
+
 
 
 
